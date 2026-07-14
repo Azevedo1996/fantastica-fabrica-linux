@@ -190,7 +190,7 @@ Ao finalizar a última pergunta, o jogo exibe uma tela especial de parabéns e c
 
 ### Tela final
 
-![Tela final](screenshots/tela-final.png)
+![Tela final](screenshots/recompensa.png)
 
 ---
 
