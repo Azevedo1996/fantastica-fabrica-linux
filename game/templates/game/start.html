@@ -1,0 +1,14 @@
+{% extends 'game/base.html' %}
+{% block title %}Iniciar Visita{% endblock %}
+{% block content %}
+<section class="panel narrow">
+  <p class="prompt">visitante@fabrica-linux:~$ registrar_visitante</p>
+  <h2>Entrada da Fábrica</h2>
+  <p class="muted">Informe um nome e comece a visita guiada pelos comandos Linux.</p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="button" type="submit">iniciar visita</button>
+  </form>
+</section>
+{% endblock %}

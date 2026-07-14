@@ -1,0 +1,44 @@
+{% extends 'game/base.html' %}
+{% block title %}Missão {{ mission.order }} | A Fantástica Fábrica do Linux{% endblock %}
+{% block content %}
+<section class="status">
+  <span>Visitante: <strong>{{ session.player_name }}</strong></span>
+  <span>{{ phase_title }}</span>
+  <span>Pontos: <strong>{{ session.score }}</strong></span>
+  <span>Missão: <strong>{{ mission.order }}/{{ total }}</strong></span>
+</section>
+<div class="bar"><div style="width: {{ progress }}%"></div></div>
+
+<section class="panel mission-box">
+  <p class="prompt">visitante@fabrica-linux:~$ abrir_setor --fase {{ session.selected_phase }} --missao {{ mission.order }}</p>
+  <h2>{{ mission.title }}</h2>
+  <pre class="story">{{ mission.story }}</pre>
+  <h3 class="question">{{ mission.question }}</h3>
+
+  {% if feedback %}
+    <div class="feedback {% if feedback.correct %}ok{% else %}bad{% endif %}">
+      <h3>{{ feedback.title }}</h3>
+      <p>{{ feedback.message }}</p>
+      {% if feedback.example %}<p>Exemplo: <code>{{ feedback.example }}</code></p>{% endif %}
+      {% if feedback.reward %}<p class="reward">Recompensa: {{ feedback.reward }}</p>{% endif %}
+      {% if feedback.hint %}<p>{{ feedback.hint }}</p>{% endif %}
+    </div>
+    {% if feedback.correct %}
+      {% if feedback.finished %}<a class="button" href="{% url 'game:mission' %}">ver resultado</a>{% else %}<a class="button" href="{% url 'game:mission' %}">próxima missão</a>{% endif %}
+    {% else %}
+      <form method="post" class="answer-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button" type="submit">enviar resposta</button>
+      </form>
+    {% endif %}
+  {% else %}
+    <form method="post" class="answer-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="button" type="submit">enviar resposta</button>
+    </form>
+  {% endif %}
+</section>
+<div class="actions"><a class="link" href="{% url 'game:restart' %}">voltar ao menu</a></div>
+{% endblock %}

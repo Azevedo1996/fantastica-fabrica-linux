@@ -1,0 +1,30 @@
+
+{% extends 'game/base.html' %}
+{% block title %}Resultado | A Fantástica Fábrica do Linux{% endblock %}
+{% block content %}
+<section class="panel victory">
+  <p class="prompt">visitante@fabrica-linux:~$ gerar_relatorio_visita</p>
+  {% if session.selected_phase == 4 %}
+    <h2>🎉 Parabéns! Você concluiu A Fantástica Fábrica do Linux!</h2>
+    <p>Você atravessou o Portão Principal, colocou a mão na massa, conheceu os sabores da fábrica e recebeu o <strong>Bilhete Dourado</strong>.</p>
+    <p>Este meetup foi só o começo. Continue aprendendo Linux, pratique os comandos no terminal e avance para temas como permissões, processos, serviços, redes e troubleshooting.</p>
+    <div class="next-adventure">
+      <h3>Próxima aventura recomendada</h3>
+      <p>Se você gostou da visita pela fábrica, continue a jornada jogando <strong>Detetive Linux — O Mistério da Fábrica</strong>.</p>
+      <p>Nele, você vai investigar problemas reais da infraestrutura, praticar comandos e aprender a pensar como uma pessoa de suporte ou infraestrutura Linux.</p>
+      <p class="final-call">A tela preta não precisa dar medo. Com prática, ela vira uma ferramenta poderosa.</p>
+    </div>
+  {% else %}
+    <h2>Fase concluída!</h2>
+    <p>{{ phase_title }} encerrada com sucesso.</p>
+  {% endif %}
+  <p>Visitante: <strong>{{ session.player_name }}</strong></p>
+  <p>Missões concluídas: <strong>{{ total }}</strong></p>
+  <p>Pontuação final: <strong>{{ session.score }}</strong></p>
+  <h3>Recompensas coletadas</h3>
+  <ul class="rewards">
+    {% for reward in rewards %}<li>{{ reward }}</li>{% empty %}<li>Nenhuma recompensa registrada.</li>{% endfor %}
+  </ul>
+  <div class="actions center"><a class="button" href="{% url 'game:restart' %}">voltar ao menu</a></div>
+</section>
+{% endblock %}
