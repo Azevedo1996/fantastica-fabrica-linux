@@ -176,21 +176,6 @@ Ao finalizar a última pergunta, o jogo exibe uma tela especial de parabéns e c
 
 ## 🖼️ Screenshots
 
-> Crie uma pasta chamada `screenshots/` na raiz do projeto e adicione as imagens do jogo.
-
-Sugestão de arquivos:
-
-```text
-screenshots/
-├── tela-inicial.png
-├── escolha-fase.png
-├── missao.png
-├── recompensa.png
-└── tela-final.png
-```
-
-Depois, os prints podem ser exibidos assim:
-
 ### Tela inicial
 
 ![Tela inicial](screenshots/tela-inicial.png)
