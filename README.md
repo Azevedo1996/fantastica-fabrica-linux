@@ -252,7 +252,7 @@ fantastica_fabrica_linux/
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/SEU_USUARIO/fantastica-fabrica-linux.git
+git clone https://github.com/Azevedo1996/fantastica-fabrica-linux.git
 ```
 
 ```bash
@@ -478,22 +478,6 @@ Executar migrações:
 
 ```bash
 python manage.py migrate
-```
-
----
-
-## 🧹 Arquivos que não devem ir para o GitHub
-
-O projeto já deve usar `.gitignore` para evitar arquivos como:
-
-```text
-venv/
-__pycache__/
-db.sqlite3
-.env
-*.pyc
-.vscode/
-.idea/
 ```
 
 ---
